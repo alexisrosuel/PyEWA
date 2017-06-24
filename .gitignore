@@ -25,6 +25,7 @@ wheels/
 .installed.cfg
 *.egg
 *myenv
+*/cov/*
 
 # Compiled python modules.
 *.pyc

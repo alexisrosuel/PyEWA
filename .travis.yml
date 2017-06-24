@@ -6,6 +6,7 @@ env: DEPS="numpy scipy nose matplotlib"
 
 install:
  - pip install coveralls
+ - pip install codecov
 
 # setup adapted from https://github.com/soft-matter/trackpy/blob/master/.travis.yml
 before_install:
@@ -29,7 +30,7 @@ install:
 # command to run tests
 script:
     - cd ./PyEWA/pyewa/tests/
-    - nosetests . --with-coverage --cover-package=pyewa
+    - nosetests . --with-coverage --cover-package=pyewa --cover-html
 
 after_success:
     coveralls
