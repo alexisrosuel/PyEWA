@@ -8,7 +8,7 @@ def test_online_learning():
     assert 1=1
 
 
-class TestOnlineLearning(Discrete):
+class TestEWA(Discrete):
     def __init__(self, n, p, *args, **kwargs):
         self.a = 1
 

@@ -17,6 +17,6 @@ References:
 Copyright (c) 2017-2017 Alexis Rosuel
 """
 
-from . import online_learning as ol
+from . import EWA
 
-__all__ = ['ol']
+__all__ = ['EWA']
