@@ -3,7 +3,7 @@ import numpy.testing as npt
 
 from unittest import TestCase
 
-from PyEWA.distributions import Distribution
+from pyewa.distributions import Distribution
 
 
 class TestUpdatePdf(object):
