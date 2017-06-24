@@ -30,7 +30,7 @@ install:
 # command to run tests
 script:
     - cd ./PyEWA/pyewa/tests/
-    - nosetests . --with-coverage --cover-package=pyewa --cover-html
+    - nosetests . --with-coverage --cover-package=pyewa --cover-html --cover-erase
 
 after_success:
     coveralls
