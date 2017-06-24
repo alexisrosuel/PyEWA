@@ -17,6 +17,9 @@ References:
 Copyright (c) 2017-2017 Alexis Rosuel
 """
 
-from . import EWA
+from . import *
+
+from .examples import *
+from .tests import test
 
 __all__ = ['EWA']
