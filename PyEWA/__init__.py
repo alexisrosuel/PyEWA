@@ -20,6 +20,6 @@ Copyright (c) 2017-2017 Alexis Rosuel
 from . import *
 
 from .examples import *
-from .tests import test
+from .tests import *
 
 __all__ = ['EWA']
