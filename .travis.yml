@@ -2,9 +2,10 @@ language: python
 sudo: false
 python:
   - '3.5'
+env: DEPS="numpy scipy nose matplotlib"
+
 env:
-  - DEPS="numpy scipy nose matplotlib"
-  - CODECLIMATE_REPO_TOKEN: a75b8bc4c9a649aac63261fb40b75d1c4f010d154551205d22c4b9e8941c691c
+  CODECLIMATE_REPO_TOKEN: a75b8bc4c9a649aac63261fb40b75d1c4f010d154551205d22c4b9e8941c691c
 
 install:
  - pip install coveralls
