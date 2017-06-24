@@ -1,6 +1,8 @@
 machine:
   python:
     version: 3.5
+  environment:
+    CODECLIMATE_REPO_TOKEN: a75b8bc4c9a649aac63261fb40b75d1c4f010d154551205d22c4b9e8941c691c
 
 dependencies:
 pre:
