@@ -32,7 +32,6 @@ class TestEWA(object):
 
     def test_update_distribution(self):
         ewa = EWA()
-        ewa = EWA()
         # ewa.update_distribution(x=[2], y=0.2)
         # print(ewa.distribution.pdf)
         # npt.assert_allclose(ewa.distribution.pdf, np.linspace(0, 1, 10))
