@@ -28,6 +28,8 @@ class EWA:
 
     def __init__(self, base='constant', loss_function='squared', learning_rate=0.1, prior='uniform', support=np.linspace(0, 1, 10)):
         self.support = support
+        # Compute the step between two evaluation of the distribution
+        self.step = (self.support.max() - self.support.min()) / self.support.shape[0]
         self.base = base
         self.loss_function = loss_function
         self.learning_rate = learning_rate
@@ -55,10 +57,10 @@ class EWA:
         """
         loss_by_example = np.array([self.loss_function.loss(y, self.base.evaluate(x)) for x, y in zip(X, Y)])
         W = np.exp(-self.learning_rate *
-                   np.sum(loss_by_example, axis=0) *
-                   self.prior.pdf)
+                   np.sum(loss_by_example, axis=0)) * \
+            self.prior.pdf
 
-        self.distribution.pdf = W / np.sum(W)
+        self.distribution.pdf = (W / np.sum(W)) / self.step
 
     def update_distribution(self, x, y):
         """
@@ -66,10 +68,10 @@ class EWA:
         y: int
         """
         W = np.exp(-self.learning_rate *
-                   self.loss_function.loss(y, self.base.evaluate(x)) *
-                   self.distribution.pdf)
+                   self.loss_function.loss(y, self.base.evaluate(x))) * \
+            self.distribution.pdf
 
-        self.distribution.pdf = W / np.sum(W)
+        self.distribution.pdf = (W / np.sum(W)) / self.step
 
     def update_prior(self):
         self.prior = self.distribution
