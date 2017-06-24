@@ -1,1 +1,1 @@
-# Online-learning-and-aggregation
+# Exponentially Weigthed Aggregation with Python
