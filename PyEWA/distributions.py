@@ -6,21 +6,28 @@ A collection of common distributions
 
 from scipy.stats import uniform
 import numpy as np
+import matplotlib.pyplot as plt
 
 class Distribution:
     def __init__(self, support=np.linspace(0, 1, 10), pdf=np.ones(shape=10)):
         self.pdf = pdf
+        self.support=support
 
     def update_pdf(self, pdf):
         self.pdf = pdf
 
     def plot_distribution(self):
-        return 0
+        plt.scatter(x=self.support, y=self.pdf)
+        plt.xlabel('$\\theta$')
+        plt.ylabel('$f(\\theta)$')
+        plt.title('Distribution')
+        plt.grid(True)
+        plt.show()
 
 class Uniform:
-    def __init__(self, lower=0, upper=1):
-        self.lower = lower
-        self.upper = upper
+    def __init__(self, support):
+        self.support = support
+        self.lower = self.support.min()
+        self.upper = self.support.max()
 
-    def pdf(self, x):
-        return uniform.pdf(x, loc=self.lower, scale=self.upper-self.lower)
+        self.pdf = uniform.pdf(self.support, loc=self.lower, scale=self.upper-self.lower)
