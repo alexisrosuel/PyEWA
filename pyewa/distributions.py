@@ -8,6 +8,7 @@ from scipy.stats import uniform
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 class Distribution:
     def __init__(self, support=np.linspace(0, 1, 10), pdf=np.ones(shape=10)):
         self.pdf = pdf
@@ -25,7 +26,7 @@ class Distribution:
         plt.show()
 
 class Uniform:
-    def __init__(self, support):
+    def __init__(self, support=np.linspace(0, 1, 10)):
         self.support = support
         self.lower = self.support.min()
         self.upper = self.support.max()

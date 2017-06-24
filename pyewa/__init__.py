@@ -21,4 +21,4 @@ from . import *
 
 from .tests import *
 
-__all__ = ['EWA']
+__all__ = ['pyewa']

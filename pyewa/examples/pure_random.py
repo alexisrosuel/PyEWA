@@ -9,7 +9,7 @@ sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
 
 import numpy as np
 
-from EWA import EWA
+from pyewa import ewa
 from scipy.stats import uniform
 
 def get_data():

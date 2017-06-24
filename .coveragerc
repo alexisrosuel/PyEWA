@@ -3,6 +3,8 @@
 branch = True
 parallel = True
 
+omit = *examples*
+
 [report]
 # Regexes for lines to exclude from consideration
 exclude_lines =

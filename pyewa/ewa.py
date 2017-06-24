@@ -3,9 +3,9 @@ __doc__ = """...
 
 import numpy as np
 
-from loss_functions import Squared
-from distributions import Distribution, Uniform
-from bases import Constant
+from .loss_functions import Squared
+from .distributions import Distribution, Uniform
+from .bases import Constant
 
 
 class EWA:
@@ -77,4 +77,4 @@ class EWA:
         self.prior = self.distribution
 
     def predict(self, x):
-        return np.sum(self.base.evaluate(x) * self.distribution)
+        return np.sum(self.base.evaluate(x) * self.distribution.pdf)
