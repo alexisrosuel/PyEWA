@@ -3,7 +3,7 @@ PyEWA
 
 Exponentially Weigthed Aggregation for Python
 
-.. image:: (https://travis-ci.org/alexisrosuel/PyEWA.svg?branch=master
+.. image:: https://travis-ci.org/alexisrosuel/PyEWA.svg?branch=master
     :target: https://travis-ci.org/alexisrosuel/PyEWA
 
 .. image:: https://ci.appveyor.com/api/projects/status/github/bsmurphy/PyKrige?branch=master&svg=true
