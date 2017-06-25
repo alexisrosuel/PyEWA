@@ -1,15 +1,14 @@
-from __future__ import absolute_import
-from os import sys, path
-sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
+import sys
+sys.path.insert(0, '.')
 
 #
-# Demonstrates the usage of online learning
+# Demonstrates the usage of EWA
 # See ... for more details
 #
 
 import numpy as np
 
-from pyewa import ewa
+from pyewa.ewa import EWA
 from scipy.stats import uniform
 
 def get_data():
@@ -24,8 +23,7 @@ def apply_EWA():
     Y = data[1]
 
     ewa = EWA(support=np.linspace(start=0, stop=1, num=1000))
-    """ewa.update_distribution(X[0], Y[0])
-    print(ewa.distribution.pdf)"""
+    ewa.update_distribution(X[0], Y[0])
 
     ewa.fit(X, Y)
     ewa.update_prior()

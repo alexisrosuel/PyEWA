@@ -11,4 +11,4 @@ class Constant:
         self.support = support
 
     def evaluate(self, x):
-        return [theta for theta in self.support]
+        return np.array([theta for theta in self.support])

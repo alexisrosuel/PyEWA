@@ -16,9 +16,3 @@ References:
 
 Copyright (c) 2017-2017 Alexis Rosuel
 """
-
-from . import *
-
-from .tests import *
-
-__all__ = ['pyewa']
