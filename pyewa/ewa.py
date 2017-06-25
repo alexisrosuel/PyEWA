@@ -27,10 +27,13 @@ class EWA:
         ...
     """
 
-    def __init__(self, learning_rate=0.1, B=1, base='constant', loss_function='squared', prior='uniform', support=np.linspace(0, 1, 10)):
+    def __init__(self, learning_rate=0.1, output_dimension=1, B=1, base='constant', loss_function='squared', \
+                 prior='uniform', support=np.linspace(0, 1, 10)):
         self.learning_rate = learning_rate
         # The bound of the data, assume all |X| < B
         self.B = B
+
+        self.output_dimension = output_dimension
 
         self.support = support
 
@@ -51,7 +54,7 @@ class EWA:
 
     def create_parameters(self):
         if self.base == 'constant':
-            self.base = Constant(support=self.support)
+            self.base = Constant(support=self.support, output_dimension=self.output_dimension)
 
         if self.prior == 'uniform':
             self.prior = Uniform(support=self.support)
@@ -61,10 +64,11 @@ class EWA:
 
     def fit(self, X, Y):
         """ For multiple X and y at one time
-        X : np array, shape=(number of examples, dimension of the problem)
-        Y : np array, shape=number of examples
+        X : np array, shape=(number of examples, dimension of the input)
+        Y : np array, shape=(number of examples, dimension of the prediction)
         """
-        loss_by_example = np.array([self.loss_function.loss(y, self.base.evaluate(x)) for x, y in zip(X, Y)])
+        nb_examples, _ = Y.shape
+        loss_by_example = np.array([self.loss_function.loss(Y[i], self.base.evaluate(X[i])) for i in range(nb_examples)])
         W = np.exp(-self.learning_rate *
                    np.sum(loss_by_example, axis=0)) * \
             self.prior.pdf
@@ -74,25 +78,14 @@ class EWA:
         self.update_prior()
         self.n += X.shape[0]
 
-    def update_distribution(self, x, y):
-        """
-        x: np array of shape the number of dimension of the problem
-        y: int
-        """
-        W = np.exp(-self.learning_rate *
-                   self.loss_function.loss(y, self.base.evaluate(x))) * \
-            self.distribution.pdf
-
-        self.distribution.pdf = (W / np.sum(W)) / self.step
-
-        self.update_prior()
-        self.n += 1
-
     def update_prior(self):
         self.prior = self.distribution
 
     def predict(self, x):
-        return np.sum(self.base.evaluate(x) * self.distribution.pdf)
+        """ input : x array of shape nb of dimension of the output_dimension
+        output : array of shape dimension of the output """
+        prediction_weighted_by_pdf = np.einsum('ij,i->ij', self.base.evaluate(x), self.distribution.pdf)
+        return np.sum(prediction_weighted_by_pdf, axis=0) * self.step
 
     def weak_bound_regret(self, epsilon):
         """ with probability as least 1-epsilon, this bound for the regret is true """
