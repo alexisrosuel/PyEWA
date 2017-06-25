@@ -10,6 +10,7 @@ env:
 install:
  - pip install coveralls
  - pip install codecov
+ - pip install numpy scipy matplotlib
 
 # setup adapted from https://github.com/soft-matter/trackpy/blob/master/.travis.yml
 before_install:

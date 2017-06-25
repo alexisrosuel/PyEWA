@@ -20,3 +20,6 @@ comment:
 
 codecov:
   token: 6c2d21ae-b406-4f26-802e-43040c21fba3
+
+codecov:
+  branch: master
