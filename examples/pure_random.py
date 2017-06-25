@@ -22,7 +22,7 @@ def apply_EWA():
     X = data[0]
     Y = data[1]
 
-    ewa = EWA(support=np.linspace(start=0, stop=1, num=10), output_dimension=2)
+    ewa = EWA(support=np.linspace(start=0, stop=1, num=1000), output_dimension=2, learning_rate='auto')
     # ewa.update_distribution(X[0], Y[0])
     ewa.fit(X,Y)
     print(ewa.weak_bound_regret(0.01))
