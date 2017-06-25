@@ -1,2 +1,22 @@
+#
+# This codecov.yml is the default configuration for
+# all repositories on Codecov. You may adjust the settings
+# below in your own codecov.yml in your repository.
+#
+coverage:
+  precision: 2
+  round: down
+  range: 70...100
+
+  status:
+    # Learn more at http://docs.codecov.io/docs/codecov-yaml
+    project: true
+    patch: true
+    changes: false
+
+comment:
+  layout: "header, diff"
+  behavior: default  # update if exists else create new
+
 codecov:
   token: 6c2d21ae-b406-4f26-802e-43040c21fba3
