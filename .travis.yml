@@ -7,10 +7,6 @@ env: DEPS="numpy scipy nose matplotlib"
 env:
   CODECLIMATE_REPO_TOKEN: a75b8bc4c9a649aac63261fb40b75d1c4f010d154551205d22c4b9e8941c691c
 
-install:
- - pip install coveralls
- - pip install codecov
- - pip install numpy scipy matplotlib
 
 # setup adapted from https://github.com/soft-matter/trackpy/blob/master/.travis.yml
 before_install:
@@ -25,7 +21,8 @@ install:
     - conda create -q -n krige-env python=${TRAVIS_PYTHON_VERSION} --yes
     - source activate krige-env
     - conda install --yes $DEPS pip
-    - pip install coveralls
+    - pip install coveralls codecov
+    - pip install numpy scipy matplotlib
     - python -V
     - python setup.py build_ext --inplace
     - python setup.py install

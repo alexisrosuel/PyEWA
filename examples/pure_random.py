@@ -22,23 +22,11 @@ def apply_EWA():
     X = data[0]
     Y = data[1]
 
-    ewa = EWA(support=np.linspace(start=0, stop=1, num=1000))
+    ewa = EWA(support=np.linspace(start=0, stop=1, num=10000))
     ewa.update_distribution(X[0], Y[0])
-
-    ewa.fit(X, Y)
-    ewa.update_prior()
-    ewa.distribution.plot_distribution()
-
-    ewa.fit(X, Y)
-    ewa.update_prior()
-    ewa.distribution.plot_distribution()
-
-    ewa.fit(X, Y)
-    ewa.update_prior()
-    ewa.distribution.plot_distribution()
-
-    ewa.fit(X, Y)
-    ewa.update_prior()
+    print(ewa.weak_bound_regret(0.01))
+    print(ewa.weak_bound_regret(0.5))
+    print(ewa.weak_bound_regret(0.99))
     ewa.distribution.plot_distribution()
 
 if __name__ == '__main__':
