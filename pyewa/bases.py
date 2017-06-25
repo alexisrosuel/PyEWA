@@ -18,7 +18,7 @@ class Constant:
         return theta * np.ones(shape=self.output_dimension)
 
     def evaluate(self, x):
-        """ input : array of dimension dimension of the input
+        """ input : x: array of dimension dimension of the input
         Returns a vector of shape ('dimension of the support, dimension of the prediction')
         """
         return np.array([self.f(x, theta) for theta in self.support])
