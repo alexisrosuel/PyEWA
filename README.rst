@@ -10,7 +10,7 @@ Exponentially Weigthed Aggregation for Python
     :target: https://travis-ci.org/alexisrosuel/PyEWA
 
 .. image:: https://ci.appveyor.com/api/projects/status/github/alexisrosuel/PyEWA?branch=master&svg=true
-    :target: https://ci.appveyor.com/project/alexisrosuel/pyewa
+    :target: https://ci.appveyor.com/project/alexisrosuel/PyEWA
 
 .. image:: https://circleci.com/gh/alexisrosuel/PyEWA/tree/master.svg?style=shield&circle-token=:circle-token
     :target: https://circleci.com/gh/alexisrosuel/PyEWA
