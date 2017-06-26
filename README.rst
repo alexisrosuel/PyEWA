@@ -3,6 +3,9 @@ PyEWA
 
 Exponentially Weigthed Aggregation for Python
 
+.. image:: https://codecov.io/gh/alexisrosuel/PyEWA/badge.svg
+    :target: https://codecov.io/gh/alexisrosuel/PyEWA/
+
 .. image:: https://travis-ci.org/alexisrosuel/PyEWA.svg?branch=master
     :target: https://travis-ci.org/alexisrosuel/PyEWA
 
