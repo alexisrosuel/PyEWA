@@ -45,3 +45,15 @@ Exponentially weighted aggregation example
                      [1.1, 3.2, 0.74],
                      [3.3, 4.4, 1.47],
                      [4.7, 3.8, 1.74]])
+
+References
+^^^^^^^^^^
+PAC-Bayesian bounds for the Exponentially Weighted Aggregate (EWA) in the online setting. Slow rates, fast rates. Examples: classification, regression. Multiplicative weights algorithms for the MS-type aggregation.
+
+N. Cesa-Bianchi & G. Lugosi, Prediction, learning and games, Cambridge University Press, 2006.
+
+S. Gerchinovitz, Prediction of individual sequences and prediction in the statistical framework: some links around sparse regression and aggregation techniques, PhD Thesis, Univ. Paris 11, 2011. (Chapters 2 and 3).
+
+Hoeffding and Bernstein inequalities. PAC-Bayesian bounds for the EWA in the batch setting. Slow rates in the general case. Fast rates under Bernstein and margin assumptions. Examples: classification, regression, matrix factorization.
+
+O. Catoni, Pac-Bayesian supervised classification: the thermodynamics of statistical learning, IMS Lecture Notes, 2007.
