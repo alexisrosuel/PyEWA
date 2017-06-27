@@ -27,14 +27,8 @@ class EWA:
         ...
     """
 
-
-<< << << < 744e6e8cf13ce119a5a9522ae6042b74314e0fd5
-    def __init__(self, learning_rate='auto', output_dimension=1, B=1, base='constant', loss_function='squared',
-                 prior='uniform', support=np.linspace(0, 1, 10)):
-== == == =
-    def __init__(self, learning_rate='auto', output_dimension=1, input_dimension=1, B=1, base='constant', loss_function='squared',
+    def __init__(self, learning_rate='auto', output_dimension=1, input_dimension=1, base_dimension=1, B=1, base='constant', loss_function='squared',
                  prior='uniform', lower=0, upper=1, density=5):
->>>>>> > Wip: need to separate the dimension of the input and the dimension of the parameter we want to learn
         self.learning_rate = learning_rate
         # The bound of the data, assume all |X| < B
         self.B = B
@@ -43,19 +37,13 @@ class EWA:
         self.upper = upper
         self.density = density
         self.step = float(upper - lower) / density
-        self.output_dimension = output_dimension
-        self.input_dimension = input_dimension
+        self.base_dimension = base_dimension
         # create the support of the distributions: cube in input_dimension dimensions, with density point for each axes
         self.create_support()
 
-<< << << < 744e6e8cf13ce119a5a9522ae6042b74314e0fd5
-        self.support = support
+        self.output_dimension = output_dimension
+        self.input_dimension = input_dimension
 
-        # Compute the step between two evaluation of the distribution
-        self.step = (self.support.max() - self.support.min()) / \
-            self.support.shape[0]
-== == == =
->>>>>> > Wip: need to separate the dimension of the input and the dimension of the parameter we want to learn
         self.base = base
         self.loss_function = loss_function
         self.prior = prior
@@ -72,7 +60,7 @@ class EWA:
     def create_support(self):
         obj = np.linspace(start=self.lower, stop=self.upper, num=self.density)
         support = obj
-        for i in range(self.input_dimension - 1):
+        for i in range(self.base_dimension - 1):
             support = np.array([support for i in range(self.density)])
         self.support = support
 
