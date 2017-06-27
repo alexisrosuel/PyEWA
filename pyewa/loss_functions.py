@@ -17,4 +17,4 @@ class Squared:
     def loss(self, y1, Y):
         """y1 : array of dimension dimension of the prediction
         Y : array of dimension (dimension of support, dimension of the prediction) """
-        return np.linalg.norm(y1 - Y, axis=1) ** 2
+        return np.linalg.norm(y1 - Y, axis=-1) ** 2
