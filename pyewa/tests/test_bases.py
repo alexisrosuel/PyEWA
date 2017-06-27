@@ -18,4 +18,5 @@ class TestConstant(object):
 
     def test_evaluate(self):
         c = Constant()
-        npt.assert_allclose(c.evaluate(x=1), [[x] for x in np.linspace(0, 1, 10)])
+        npt.assert_allclose(c.evaluate(x=1), [[x]
+                                              for x in np.linspace(0, 1, 10)])

@@ -6,6 +6,7 @@ A collection of common loss functions. They have to be convex
 
 import numpy as np
 
+
 class Squared:
     def __init__(self, B=1):
         # Bound for the loss function, assumes for all y, y', |l(y,y')| < C

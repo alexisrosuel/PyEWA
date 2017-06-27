@@ -27,7 +27,7 @@ class TestEWA(object):
         X = np.array([[0.5], [0.7], [0.3]])
         Y = np.array([[0.5], [0.4], [0.3]])
         ewa.fit(X=X, Y=Y)
-        npt.assert_allclose(ewa.distribution.pdf, np.array([0.985128, 1.008011, 1.023814, 1.03219 , 1.032955, 1.026092, 1.011751,
+        npt.assert_allclose(ewa.distribution.pdf, np.array([0.985128, 1.008011, 1.023814, 1.03219, 1.032955, 1.026092, 1.011751,
                                                             0.990249, 0.962051, 0.927759]), atol=1e-4)
 
     def test_update_prior(self):

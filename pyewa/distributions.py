@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 class Distribution:
     def __init__(self, support=np.linspace(0, 1, 10), pdf=np.ones(shape=10)):
         self.pdf = pdf
-        self.support=support
+        self.support = support
 
     def update_pdf(self, pdf):
         self.pdf = pdf
@@ -25,10 +25,12 @@ class Distribution:
         plt.grid(True)
         plt.show()
 
+
 class Uniform:
     def __init__(self, support=np.linspace(0, 1, 10)):
         self.support = support
         self.lower = self.support.min()
         self.upper = self.support.max()
 
-        self.pdf = uniform.pdf(self.support, loc=self.lower, scale=self.upper-self.lower)
+        self.pdf = uniform.pdf(self.support, loc=self.lower,
+                               scale=self.upper - self.lower)

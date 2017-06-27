@@ -6,6 +6,7 @@ A collection of common functions bases
 
 import numpy as np
 
+
 class Constant:
     def __init__(self, support=np.linspace(0, 1, 10), output_dimension=1):
         self.output_dimension = output_dimension
