@@ -5,21 +5,19 @@ import numpy as np
 
 from .loss_functions import Squared
 from .distributions import Distribution, Uniform
-from .bases import Constant
+from .bases import Constant, Linear
 from .utils import bernstein_function
 
 
 class EWA:
-    """class OnlineLearning
-    Class for online learning
+    """class Exponentially weighted aggregation
+    Class for Exponentially weighted aggregation
     Dependencies:
         numpy
         scipy
         matplotlib
     Inputs:
-        X (array-like): Coordinates of data points.
-        Y (array-like): Y-coordinates of data points.
-        Z (array-like): Values at data points.
+        ...
 
     Callable Methods:
 
@@ -68,6 +66,9 @@ class EWA:
         if self.base == 'constant':
             self.base = Constant(support=self.support,
                                  output_dimension=self.output_dimension)
+        elif self.base == 'linear':
+            self.base = Linear(support=self.support,
+                               output_dimension=self.output_dimension)
 
         if self.prior == 'uniform':
             self.prior = Uniform(support=self.support)
@@ -115,9 +116,11 @@ class EWA:
     def predict(self, x):
         """ input : x array of shape nb of dimension of the output_dimension
         output : array of shape dimension of the output """
-        prediction_weighted_by_pdf = np.einsum(
-            'ij,i->ij', self.base.evaluate(x), self.distribution.pdf)
-        return np.sum(prediction_weighted_by_pdf, axis=0) * self.step
+        all_predictions = self.base.evaluate(x)
+        prediction_weighted_by_pdf = np.array(
+            [all_predictions[index] * self.distribution.pdf[index] for index, _ in np.ndenumerate(self.distribution.pdf)])
+
+        return np.sum(prediction_weighted_by_pdf, axis=0) * self.step ** self.input_dimension
 
     def weak_bound_regret(self, epsilon):
         """ with probability as least 1-epsilon, this bound for the regret is true
