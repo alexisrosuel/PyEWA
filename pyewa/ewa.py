@@ -6,7 +6,7 @@ import numpy as np
 from .loss_functions import Squared
 from .distributions import Distribution, Uniform
 from .bases import Constant, Linear
-from .utils import bernstein_function
+from .utils import bernstein_function, create_support
 
 
 class EWA:
@@ -28,16 +28,20 @@ class EWA:
     def __init__(self, learning_rate='auto', output_dimension=1, input_dimension=1, base_dimension=1, B=1, base='constant', loss_function='squared',
                  prior='uniform', lower=0, upper=1, density=5):
         self.learning_rate = learning_rate
+
         # The bound of the data, assume all |X| < B
         self.B = B
 
+        # The upper and lower bound of the Y
         self.lower = lower
         self.upper = upper
         self.density = density
         self.step = float(upper - lower) / density
+
+        # create the support of the distributions: hypercube in input_dimension dimensions, with density point for each axes
         self.base_dimension = base_dimension
-        # create the support of the distributions: cube in input_dimension dimensions, with density point for each axes
-        self.create_support()
+        self.support = create_support(
+            lower=self.lower, upper=self.upper, density=self.density, base_dimension=self.base_dimension)
 
         self.output_dimension = output_dimension
         self.input_dimension = input_dimension
@@ -45,7 +49,6 @@ class EWA:
         self.base = base
         self.loss_function = loss_function
         self.prior = prior
-        # Compute the step between two evaluation of the distribution
         self.create_parameters()
 
         # initialize distribution with the prior
@@ -54,13 +57,6 @@ class EWA:
 
         # we saw 0 examples for the moment
         self.n = 0
-
-    def create_support(self):
-        obj = np.linspace(start=self.lower, stop=self.upper, num=self.density)
-        support = obj
-        for i in range(self.base_dimension - 1):
-            support = np.array([support for i in range(self.density)])
-        self.support = support
 
     def create_parameters(self):
         if self.base == 'constant':
@@ -122,7 +118,7 @@ class EWA:
 
         return np.sum(prediction_weighted_by_pdf, axis=0) * self.step ** self.input_dimension
 
-    def weak_bound_regret(self, epsilon):
+    def weak_bound_regret(self, epsilon=0.05):
         """ with probability as least 1-epsilon, this bound for the regret is true
         non optimal learning rate : lambda C^2 / (4n) + 2 (log M + log 2/epsilon) / lamnda
         optimal learning rate : C sqrt(2 log(M) / n) + C log(2/epsilon) / sqrt(2n log(M))"""
