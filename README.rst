@@ -15,11 +15,11 @@ Exponentially Weigthed Aggregation for Python
 .. image:: https://circleci.com/gh/alexisrosuel/PyEWA/tree/master.svg?style=shield&circle-token=:circle-token
     :target: https://circleci.com/gh/alexisrosuel/PyEWA
 
-The code supports exponentialweighted aggregation (ewa for short). Some standard base functions (constant, linear, etc) are built-in. 
+The code supports exponentialweighted aggregation (ewa for short). Some standard base functions (constant, linear, etc) are built-in.
 
-Examples of the use of this package are shown below. 
+Examples of the use of this package are shown below.
 
-The kriging methods are separated into four classes. 
+The kriging methods are separated into four classes.
 
 PyEWA will later be on PyPi, so installation is as simple as typing the following into a command line.
 
@@ -35,6 +35,9 @@ To update PyEWA from PyPi, type the following into a command line.
 
 PyKrige uses the MIT-Clause License.
 
+To test, use
+nosetests . --with-coverage --cover-package=pyewa --cover-html --cover-erase
+
 Exponentially weighted aggregation example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -42,7 +45,7 @@ Exponentially weighted aggregation example
 
     from pyewa.ewa import EWA
     import numpy as np
-    
+
     data = np.array([[0.3, 1.2, 0.47],
                      [1.9, 0.6, 0.56],
                      [1.1, 3.2, 0.74],
