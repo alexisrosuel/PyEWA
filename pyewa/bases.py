@@ -46,12 +46,17 @@ class Constant:
 class Linear:
     def __init__(self, support=np.linspace(0, 1, 10), output_dimension=1, input_dimension=1):
         """
-        For this class, the parameter theta must have the dimension (input_dimension, output_dimension)
+        For this class, the parameter theta must have the dimension (input_dimension, output_dimension). As it was initially
+        a vector of dimension 'base_dimension', it must be reshaped to 'output_dimension x input_dimension'
         """
-        print(support.shape)
-        if len(support.shape) != (input_dimension, output_dimension):
+        # Try to reshape theta
+        if len(support.shape) != output_dimension * input_dimension:
             raise ValueError(
                 'Impossible to use linear base with dimension theta != (dimension input, dimension_output)')
+
+        # if we can, we reshape theta
+        self.support = np.reshape(support, newshape=(
+            output_dimension, input_dimension))
 
         self.output_dimension = output_dimension
         self.support = support
@@ -77,3 +82,5 @@ class Linear:
         newshape = self.support.shape + (self.output_dimension,)
         result = np.reshape(result_1d, newshape=newshape)
         return result
+
+# class Quadratic : f_theta(x) = xT.theta.x

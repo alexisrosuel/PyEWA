@@ -41,7 +41,7 @@ class TestConstant(object):
 class TestLinear(object):
     def test_constant_init(self):
         support = create_support(base_dimension=3)
-        l = Linear(support=support, input_dimension=1, output_dimension=1)
+        l = Linear(support=support, input_dimension=3, output_dimension=1)
         assert l.M == 10
 
     """    # Test multidimensionnal support
