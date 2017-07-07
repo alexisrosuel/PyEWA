@@ -18,19 +18,29 @@ class Distribution:
         self.pdf = pdf
 
     def plot_distribution(self):
-        plt.scatter(x=self.support, y=self.pdf)
-        plt.xlabel('$\\theta$')
-        plt.ylabel('$f(\\theta)$')
-        plt.title('Distribution')
-        plt.grid(True)
-        plt.show()
+        if len(self.support.shape) == 1:
+            plt.scatter(x=self.support, y=self.pdf)
+            plt.xlabel('$\\theta$')
+            plt.ylabel('$f(\\theta)$')
+            plt.title('Distribution')
+            plt.grid(True)
+            plt.show()
+
+        elif len(self.support.shape) == 2:
+            extent = [self.support.min(), self.support.max(),
+                      self.support.min(), self.support.max()]
+
+            plt.imshow(self.pdf, cmap='Reds',
+                       interpolation='nearest', extent=extent, origin='lower')
+
+            plt.show()
+
+        else:
+            print('impossible to print, dimension of input > 2')
 
 
 class Uniform:
     def __init__(self, support=np.linspace(0, 1, 10)):
         self.support = support
-        self.lower = self.support.min()
-        self.upper = self.support.max()
-
-        self.pdf = uniform.pdf(self.support, loc=self.lower,
-                               scale=self.upper - self.lower)
+        self.densite = 1. / np.prod(self.support.shape)
+        self.pdf = (self.support * 0) + self.densite
