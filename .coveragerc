@@ -1,17 +1,14 @@
-# .coveragerc to control coverage.py
 [run]
-branch = True
-parallel = True
-
-omit = *examples*
+omit =
+  */lib/python3*
+  *testing*
 
 [report]
-# Regexes for lines to exclude from consideration
 exclude_lines =
-    # Have to re-enable the standard pragma
-    pragma: no cover
+  pragma: no cover
 
     # Don't complain about missing debug-only code:
+    def __unicode__
     def __repr__
     if self\.debug
 
@@ -22,8 +19,3 @@ exclude_lines =
     # Don't complain if non-runnable code isn't run:
     if 0:
     if __name__ == .__main__.:
-
-ignore_errors = True
-
-[html]
-directory = coverage_html_report
