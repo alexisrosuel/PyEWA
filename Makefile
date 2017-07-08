@@ -1,4 +1,4 @@
 export SHELL := /bin/bash
 
 test:
-	pytest --cov pyewa --cov-report term
+	py.test --cov=pyewa --cov-report term testing/
