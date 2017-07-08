@@ -6,12 +6,6 @@ Exponentially Weigthed Aggregation for Python
 .. image:: https://codecov.io/gh/alexisrosuel/PyEWA/badge.svg
     :target: https://codecov.io/gh/alexisrosuel/PyEWA/
 
-.. image:: https://travis-ci.org/alexisrosuel/PyEWA.svg?branch=master
-    :target: https://travis-ci.org/alexisrosuel/PyEWA
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/alexisrosuel/PyEWA?branch=master&svg=true
-    :target: https://ci.appveyor.com/project/alexisrosuel/PyEWA
-
 .. image:: https://circleci.com/gh/alexisrosuel/PyEWA/tree/master.svg?style=shield&circle-token=:circle-token
     :target: https://circleci.com/gh/alexisrosuel/PyEWA
 
@@ -33,7 +27,7 @@ To update PyEWA from PyPi, type the following into a command line.
 
     pip install --upgrade pyewa
 
-PyKrige uses the MIT-Clause License.
+PyEWA uses the MIT-Clause License.
 
 To test, use
 nosetests . --with-coverage --cover-package=pyewa --cover-html --cover-erase
