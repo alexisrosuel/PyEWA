@@ -1,7 +1,4 @@
-import numpy as np
 import numpy.testing as npt
-
-from unittest import TestCase
 
 from pyewa.bases import Constant, Linear
 from pyewa.utils import create_support

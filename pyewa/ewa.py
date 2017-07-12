@@ -6,7 +6,7 @@ import numpy as np
 from .loss_functions import Squared
 from .distributions import Distribution, Uniform
 from .bases import Constant, Linear
-from .utils import bernstein_function, create_support
+from .utils import create_support
 
 
 class EWA:

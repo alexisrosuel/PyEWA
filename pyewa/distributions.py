@@ -4,7 +4,6 @@ EWA.prior
 A collection of common distributions
 """
 
-from scipy.stats import uniform
 import numpy as np
 import matplotlib.pyplot as plt
 

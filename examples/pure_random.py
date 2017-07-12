@@ -60,7 +60,6 @@ def apply_EWA():
 
     # Test constant 2d
     X, Y = get_data_2d()
-    print(Y)
 
     input_dimension = X.shape[1]
     output_dimension = Y.shape[1]
